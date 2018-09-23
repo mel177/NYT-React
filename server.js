@@ -29,26 +29,21 @@ const db = require("./client/models")
 const{ Article } = db
 
 //routes//
-app.post("/api/saved", (req, res) => {
+var articlesController = require("./server/controllers/article-controller");
+var router = new express.Router();
+// Define any API routes first
+// Get saved articles
+router.get("/api/saved", articlesController.find);
+// Save articles
+router.post("/api/saved", articlesController.insert);
+// delete saved articles
+router.delete("/api/saved/:id", articlesController.delete);
+// Send every other request to the React app
+router.get("/*", function(req, res) {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+});
 
-// get the posted object
-var article = req.body
-console.log(article)
-  //call Article.create
-    //then return some json
-
-Article.create(article)
-.then(() => {
-  res.json(article)
-})
-.catch((err) => {
-  res.json(err)
-})
-})
-
-app.get('/api/saved',(req,res) => {
- Article.find({}).then(articles => res.json(articles))
-})
+app.use(router);
 // Send every other request to the React app
 // Define any API routes before this runs
 app.get("*", (req, res) => {

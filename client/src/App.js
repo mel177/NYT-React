@@ -3,11 +3,11 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
 import Main from "./components/Main";
 
-const App = () =>
+const App = () => (
   <Router>
     <div>
       <Route exact path="/" component={Main} />
     </div>
-  </Router>;
-
+  </Router>
+);
 export default App;
