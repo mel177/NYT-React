@@ -26,7 +26,29 @@ mongoose.connect(
 
 /**DB */
 const db = require("./client/models")
-console.log(db.Article)
+const{ Article } = db
+
+//routes//
+app.post("/api/saved", (req, res) => {
+
+// get the posted object
+var article = req.body
+console.log(article)
+  //call Article.create
+    //then return some json
+
+Article.create(article)
+.then(() => {
+  res.json(article)
+})
+.catch((err) => {
+  res.json(err)
+})
+})
+
+app.get('/api/saved',(req,res) => {
+ Article.find({}).then(articles => res.json(articles))
+})
 // Send every other request to the React app
 // Define any API routes before this runs
 app.get("*", (req, res) => {
