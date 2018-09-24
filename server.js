@@ -25,11 +25,11 @@ mongoose.connect(
 );
 
 /**DB */
-const db = require("./server/models/")
+const db = require("./controller/models/")
 const{ Article } = db
 
 //routes//
-var articlesController = require("./server/controllers/article-controller");
+var articlesController = require("./controller/controllers/article-controller");
 var router = new express.Router();
 // Define any API routes first
 // Get saved articles
