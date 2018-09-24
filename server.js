@@ -25,7 +25,7 @@ mongoose.connect(
 );
 
 /**DB */
-const db = require("./server/models")
+const db = require("./server/models/")
 const{ Article } = db
 
 //routes//
