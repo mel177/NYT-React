@@ -25,8 +25,6 @@ mongoose.connect(
 );
 
 /**DB */
-const db = require("./controller/models/")
-const{ Article } = db
 
 //routes//
 var articlesController = require("./controller/controllers/article-controller");
